@@ -1,12 +1,114 @@
+<!--
+hey, what are you doing here?
+
+get out!
+-->
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>co tam?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* background-color: #2c2c2c; */
+            background-color: #1f1f1f;
+            font-family: 'Lato', sans-serif;
+            color: #d1c27d;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .saxguy {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hejka {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            margin-top: 3rem;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .iwenciki-cn {
+            margin-top: 15vh;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        li {
+            font-size: 1.8rem;
+        }
+        
+        .dark-links a {
+            color: #58a6ff; /* Light blue for unvisited links */
+        }
+
+        .dark-links a:visited {
+            color: #bc8cff; /* Light purple for visited links */
+        }
+
+        .dark-links a:hover {
+            color: #79c0ff; /* Lighter blue on hover */
+            text-decoration: underline;
+        }
+
+        .date {
+            color: #c92ef0;
+            font-weight: 600;
+        }
+
+        .gdzie {
+            color: #4837aa;
+            font-weight: 300;
+        }
+
+        .fejsbuk {
+            color: #346648;
+            text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+        }
+        .fejsbuk a:visited {
+            color: #bc8cff; /* Light purple for visited links */
+        }
+    </style>
 </head>
 <body>
-    <h1>hejka naklejka</h1>
-    <div style="width: 100px; height: 100px" class="tenor-gif-embed" data-postid="15079243" data-share-method="host" data-aspect-ratio="0.809375" data-width="100%">
-        <a href="https://tenor.com/view/epic-sax-guy-transparent-transparent-epic-sax-guy-gif-15079243">Epic Sax Guy Transparent Transparent Sticker</a>from
-        <a href="https://tenor.com/search/epic+sax+guy+transparent-stickers">Epic Sax Guy Transparent Stickers</a>
-    </div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    <p>so, here's a <a href="nyan_cat_website.html">vibe coded website</a></p>
-    <p>and here's <a href="nyan_cat_website_2.html">a different version</a></p>
-    <footer>hey, why not let some <a href="https://www.instagram.com/napieprzanko/">noise into your life?</a></footer>
+    <h1 class="hejka">hejka naklejka</h1>
+    <img class="saxguy" src="https://i.kym-cdn.com/photos/images/newsfeed/000/330/001/75c.gif">
+    <p class="dark-links">so, here's a <a href="nyan_cat_website.html">vibe coded website</a></p>
+    <p class="dark-links">and here's <a href="nyan_cat_website_2.html">a different version</a></p>
+    <ul class="iwenciki-cn"i>
+        <li><span class="date">01.10</span> | <span class="gdzie">pandymińska</span> | ok list time <span class="fejsbuk">fb event</span></li>
+        <li><span class="date">01.10</span> | <span class="gdzie">pandymińska</span> | amirite</li>
+        <li><span class="date">02.10</span> | <span class="gdzie">pandymińska</span> | lesssgooooo</li>
+    </ul>
+
+    <footer class="dark-links">hey, why not let some <a href="https://www.instagram.com/napieprzanko/">noise into your life?</a></footer>
 </body>
