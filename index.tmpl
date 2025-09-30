@@ -106,8 +106,9 @@ get out!
     <p class="dark-links">and here's <a href="nyan_cat_website_2.html">a different version</a></p>
     <ul class="iwenciki-cn"i>
         <li><span class="date">01.10</span> | <span class="gdzie">pandymińska</span> | ok list time <span class="fejsbuk">fb event</span></li>
-        <li><span class="date">01.10</span> | <span class="gdzie">pandymińska</span> | amirite</li>
-        <li><span class="date">02.10</span> | <span class="gdzie">pandymińska</span> | lesssgooooo</li>
+        {% for event in event_list %}
+        <li><span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | {{ event.description }}</li>
+        {% endfor %}
     </ul>
 
     <footer class="dark-links">hey, why not let some <a href="https://www.instagram.com/napieprzanko/">noise into your life?</a></footer>
