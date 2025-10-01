@@ -14,7 +14,7 @@ def _filter_current(df):
     def _in_range(date):
         return (date >= today) & (date <= today + timedelta(14))
 
-    return df[_in_range(df['date'])]
+    return df[_in_range(df['date'])].sort_values(by="date")
 
 
 def _format_dates(dates):

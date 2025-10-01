@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Logger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        input[type="date"],
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        input[type="date"]:focus,
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .entries {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .entries h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .entry-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .entry-item strong {
+            color: #667eea;
+        }
+        
+        .download-btn {
+            margin-top: 15px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        
+        .download-btn:hover {
+            box-shadow: 0 6px 20px rgba(17, 153, 142, 0.4);
+        }
+        
+        .no-entries {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Iwenciki cn</h1>
+        
+        <form id="dataForm">
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Enter location" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" placeholder="Enter description" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn">Submit Entry</button>
+        </form>
+        
+        <div class="entries">
+            <h2>Recorded Entries (<span id="count">0</span>)</h2>
+            <div id="entriesList"></div>
+            <button id="downloadBtn" class="btn download-btn" style="display: none;">Download CSV</button>
+        </div>
+    </div>
+
+    <script>
+        let entries = [];
+        
+        const form = document.getElementById('dataForm');
+        const entriesList = document.getElementById('entriesList');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const countSpan = document.getElementById('count');
+        
+        // Set today's date as default
+        document.getElementById('date').valueAsDate = new Date();
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const date = document.getElementById('date').value;
+            const location = document.getElementById('location').value;
+            const description = document.getElementById('description').value;
+            
+            // Add to entries array
+            entries.push({ date, location, description });
+            
+            // Update display
+            updateEntriesList();
+            
+            // Reset form
+            form.reset();
+            document.getElementById('date').valueAsDate = new Date();
+            
+            // Show download button
+            downloadBtn.style.display = 'block';
+        });
+        
+        function updateEntriesList() {
+            countSpan.textContent = entries.length;
+            
+            if (entries.length === 0) {
+                entriesList.innerHTML = '<p class="no-entries">No entries yet</p>';
+                return;
+            }
+            
+            entriesList.innerHTML = entries.map(entry => `
+                <div class="entry-item">
+                    <strong>Date:</strong> ${entry.date}<br>
+                    <strong>Location:</strong> ${entry.location}<br>
+                    <strong>Description:</strong> ${entry.description}
+                </div>
+            `).join('');
+        }
+        
+        downloadBtn.addEventListener('click', async function() {
+            // // Create CSV content
+            // let csv = 'Date,Location,Description\n';
+            
+            // entries.forEach(entry => {
+            //     // Escape fields that contain commas or quotes
+            //     const escapedLocation = escapeCSV(entry.location);
+            //     const escapedDescription = escapeCSV(entry.description);
+            //     csv += `${entry.date},${escapedLocation},${escapedDescription}\n`;
+            // });
+            
+            // // Create download link
+            // const blob = new Blob([csv], { type: 'text/csv' });
+            // const url = window.URL.createObjectURL(blob);
+            // const a = document.createElement('a');
+            // a.href = url;
+            // a.download = `data_log_${new Date().toISOString().split('T')[0]}.csv`;
+            // document.body.appendChild(a);
+            // a.click();
+            // document.body.removeChild(a);
+
+            try {
+                // Read existing CSV file if it exists
+                let existingCSV = '';
+                existingCSV = 'date,location,description\n';
+                
+                // Append new entries
+                let newRows = '';
+                entries.forEach(entry => {
+                    const escapedLocation = escapeCSV(entry.location);
+                    const escapedDescription = escapeCSV(entry.description);
+                    newRows += `${entry.date},${escapedLocation},${escapedDescription}\n`;
+                });
+                
+                const updatedCSV = existingCSV + newRows;
+                
+                // Create download link with updated content
+                const blob = new Blob([updatedCSV], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'data_log.csv';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                
+                // Clear entries after successful append
+                entries = [];
+                updateEntriesList();
+                downloadBtn.style.display = 'none';
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error processing CSV file: ' + error.message);
+            }           // window.URL.revokeObjectURL(url);
+        });
+        
+        function escapeCSV(field) {
+            if (field.includes(',') || field.includes('"') || field.includes('\n')) {
+                return `"${field.replace(/"/g, '""')}"`;
+            }
+            return field;
+        }
+        
+        // Initialize
+        updateEntriesList();
+    </script>
+</body>
+</html>
