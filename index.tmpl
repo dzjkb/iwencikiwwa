@@ -19,7 +19,8 @@ get out!
 
         body {
             /* background-color: #2c2c2c; */
-            background-color: #1f1f1f;
+            /* background-color: #1f1f1f; */
+            background-color: #000000;
             font-family: 'Lato', sans-serif;
             color: #d1c27d;
             min-height: 100vh;
@@ -46,7 +47,8 @@ get out!
 
         .hejka {
             font-family: 'Roboto';
-            font-size: clamp(3rem, 10vw, 4.5rem);
+            /* font-size: clamp(3rem, 10vw, 4.5rem); */
+            font-size: clamp(1.5rem, 1vw, 2rem);
             text-align: center;
             margin-bottom: 3rem;
             margin-top: 3rem;
@@ -90,6 +92,11 @@ get out!
             font-weight: 300;
         }
 
+        .tix {
+            color: #4f84ca;
+            font-weight: 300;
+        }
+
         .fejsbuk {
             color: #346648;
             text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
@@ -97,17 +104,39 @@ get out!
         .fejsbuk a:visited {
             color: #bc8cff; /* Light purple for visited links */
         }
+        .fixed-transparent-image {
+            position: fixed;
+            top: 30%;
+            left: 30%;
+            opacity: 0.5;
+            z-index: -1000;
+            pointer-events: none; /* Optional: allows clicking through the image */
+        }
+
+        .img-1 {
+            width: clamp(20rem, 30vw, 50rem);
+            height: clamp(20rem, 30vw, 50rem);
+            transform: translate(110%, 30%);
+        }
+        .img-2 {
+            left: 0%;
+            width: clamp(20rem, 30vw, 50rem);
+            height: clamp(20rem, 30vw, 50rem);
+            transform: translate(0%, 30%);
+        }
     </style>
 </head>
 <body>
-    <h1 class="hejka">Się dzieje</h1>
+    <h1 class="hejka">ej dzieje się dzisiaj coś fajnego na mieście?</h1>
     <img class="saxguy" src="https://i.kym-cdn.com/photos/images/newsfeed/000/330/001/75c.gif">
     <ul class="iwenciki-cn"i>
         <li><span class="date">01.10</span> | <span class="gdzie">pandymińska</span> | ok list time <span class="fejsbuk">fb event</span></li>
         {% for event in event_list %}
-        <li><span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | {{ event.description }}</li>
+        <li><span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | <span class="tix">{{ event.tix }}pln</span> | {{ event.description }} {% if event.fblink != 'none' %} <span class="fejsbuk"><a href="{{ event.fblink }}">event link</a></span> {% endif %}</li>
         {% endfor %}
     </ul>
+    <img class="fixed-transparent-image img-1" src="https://art.pixilart.com/020b2fa398d3406.gif">
+    <img class="fixed-transparent-image img-2" src="https://www.icegif.com/wp-content/uploads/2024/01/icegif-367.gif">
 
     <footer class="dark-links">hey, why not let some <a href="https://www.instagram.com/napieprzanko/">noise into your life?</a></footer>
 </body>
