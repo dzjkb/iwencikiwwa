@@ -155,6 +155,16 @@
                 <textarea id="description" placeholder="Enter description" required></textarea>
             </div>
             
+            <div class="form-group">
+                <label for="tix">Tix</label>
+                <input type="text" id="tix" placeholder="How much?" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fblink">FB link</label>
+                <input type="text" id="fblink" placeholder="none" required>
+            </div>
+
             <button type="submit" class="btn">Submit Entry</button>
         </form>
         
@@ -182,9 +192,11 @@
             const date = document.getElementById('date').value;
             const location = document.getElementById('location').value;
             const description = document.getElementById('description').value;
+            const tix = document.getElementById('tix').value;
+            const fblink = document.getElementById('fblink').value;
             
             // Add to entries array
-            entries.push({ date, location, description });
+            entries.push({ date, location, description, tix, fblink });
             
             // Update display
             updateEntriesList();
@@ -209,7 +221,9 @@
                 <div class="entry-item">
                     <strong>Date:</strong> ${entry.date}<br>
                     <strong>Location:</strong> ${entry.location}<br>
-                    <strong>Description:</strong> ${entry.description}
+                    <strong>Description:</strong> ${entry.description}<br>
+                    <strong>Tix:</strong> ${entry.tix}<br>
+                    <strong>FB Link:</strong> ${entry.fblink}
                 </div>
             `).join('');
         }
@@ -238,14 +252,16 @@
             try {
                 // Read existing CSV file if it exists
                 let existingCSV = '';
-                existingCSV = 'date,location,description\n';
+                existingCSV = 'date,location,description,tix,fblink\n';
                 
                 // Append new entries
                 let newRows = '';
                 entries.forEach(entry => {
                     const escapedLocation = escapeCSV(entry.location);
                     const escapedDescription = escapeCSV(entry.description);
-                    newRows += `${entry.date},${escapedLocation},${escapedDescription}\n`;
+                    const escapedTix = escapeCSV(entry.tix);
+                    const escapedFblink = escapeCSV(entry.fblink);
+                    newRows += `${entry.date},${escapedLocation},${escapedDescription},${escapedTix},${escapedFblink}\n`;
                 });
                 
                 const updatedCSV = existingCSV + newRows;

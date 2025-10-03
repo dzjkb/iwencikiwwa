@@ -50,12 +50,19 @@ get out!
             /* font-size: clamp(3rem, 10vw, 4.5rem); */
             font-size: clamp(1.5rem, 1vw, 2rem);
             text-align: center;
+            /* list-style-position: inside; */
             margin-bottom: 3rem;
             margin-top: 3rem;
 
             display: block;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        ul {
+            list-style-type: none;
+            width: fit-content;
+            margin: 0 auto;
         }
 
         .iwenciki-cn {
@@ -67,6 +74,7 @@ get out!
 
         li {
             font-size: clamp(1rem, 2.5vw, 1.6rem);
+            text-align: center;
         }
         
         .dark-links a {
@@ -108,7 +116,7 @@ get out!
             position: fixed;
             top: 30%;
             left: 30%;
-            opacity: 0.5;
+            opacity: 0.3;
             z-index: -1000;
             pointer-events: none; /* Optional: allows clicking through the image */
         }
@@ -130,9 +138,8 @@ get out!
     <h1 class="hejka">ej dzieje się dzisiaj coś fajnego na mieście?</h1>
     <img class="saxguy" src="https://i.kym-cdn.com/photos/images/newsfeed/000/330/001/75c.gif">
     <ul class="iwenciki-cn"i>
-        <li><span class="date">01.10</span> | <span class="gdzie">pandymińska</span> | ok list time <span class="fejsbuk">fb event</span></li>
         {% for event in event_list %}
-        <li><span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | <span class="tix">{{ event.tix }}pln</span> | {{ event.description }} {% if event.fblink != 'none' %} <span class="fejsbuk"><a href="{{ event.fblink }}">event link</a></span> {% endif %}</li>
+        <li><span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | <span class="tix">{{ event.tix }}pln</span> | {{ event.description }} {% if event.fblink != 'none' %} <span class="fejsbuk"><a href="{{ event.fblink }}">[event link]</a></span> {% endif %}</li>
         {% endfor %}
     </ul>
     <img class="fixed-transparent-image img-1" src="https://art.pixilart.com/020b2fa398d3406.gif">

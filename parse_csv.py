@@ -3,11 +3,11 @@ also does event filtering to get a reasonable date range (today - ~2 weeks from 
 """
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time, date
 
 import pandas as pd
 
-today = datetime.today()
+today = datetime.combine(date.today(), time())
 
 
 def _filter_current(df):
