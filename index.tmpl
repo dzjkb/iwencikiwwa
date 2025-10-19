@@ -72,7 +72,14 @@ get out!
         }
 
         .iwenciki-cn {
-            margin-top: 15vh;
+            margin-top: 12vh;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .start-tekscik {
+            margin-top: 7vh;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -169,6 +176,9 @@ get out!
 <body>
     <h1 class="hejka">ej dzieje się dzisiaj coś fajnego na mieście?</h1>
     <img class="saxguy" src="https://i.kym-cdn.com/photos/images/newsfeed/000/330/001/75c.gif">
+    <p class="start-tekscik">
+        jeśli wiesz o jakimś sztos iwenciku wydarzającym się <span class="rainbow-text">soon</span> i myślisz, że powinien się znaleźć na tej liście: <span class="rainbow-text"><a href="mailto:jakub.pies+iwenciki@gmail.com">hmu</a></span>
+    </p>
     <ul class="iwenciki-cn"i>
         {% for event in event_list %}
         {% if "!!!!" in event.description %}
