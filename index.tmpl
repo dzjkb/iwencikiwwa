@@ -138,6 +138,32 @@ get out!
             height: clamp(20rem, 30vw, 50rem);
             transform: translate(0%, 30%);
         }
+        .rainbow-text {
+            background: linear-gradient(
+                to right,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #9400d3
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -145,7 +171,15 @@ get out!
     <img class="saxguy" src="https://i.kym-cdn.com/photos/images/newsfeed/000/330/001/75c.gif">
     <ul class="iwenciki-cn"i>
         {% for event in event_list %}
-        <li><span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | <span class="tix">{{ event.tix }}pln</span> | {{ event.description }} {% if event.fblink != 'none' %} <span class="fejsbuk"><a href="{{ event.fblink }}">[event link]</a></span> {% endif %}</li>
+        {% if "!!!!" in event.description %}
+        <li class="rainbow-text">
+        {% else %}
+        <li>
+        {% endif %}
+            <span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | 
+            <span class="tix">{{ event.tix }}pln</span> | {{ event.description }} {% if event.fblink != 'none' %}
+            <span class="fejsbuk"><a href="{{ event.fblink }}">[event link]</a></span> {% endif %}
+        </li>
         {% endfor %}
     </ul>
     <a href="transcription.html"><img class="fixed-transparent-image img-1" src="https://art.pixilart.com/020b2fa398d3406.gif"></a>
