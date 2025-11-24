@@ -43,13 +43,22 @@ get out!
             font-size: clamp(0.75rem, 1.5vw, 0.875rem);
         }
 
-        .saxguy {
+        .saxguycontainer {
+            position: relative;
             width: 200px;
             height: 200px;
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
+
+        <!--.saxguy {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }-->
 
         .hejka {
             font-family: 'Roboto';
@@ -234,6 +243,21 @@ get out!
         .snowflake:nth-child(38) { left: 90%; animation-duration: 9s; animation-delay: 5.9s; }
         .snowflake:nth-child(39) { left: 88%; animation-duration: 11s; animation-delay: 0.1s; }
         .snowflake:nth-child(40) { left: 33%; animation-duration: 12s; animation-delay: 2.7s; }
+        .santa-hat {
+          position: absolute;
+          width: 65px; /* Adjust size as needed */
+          height: 65px;
+          transform: rotate(-20deg); /* Tilted to the left */
+          z-index: 1000; /* Hovers above other elements */
+          pointer-events: none; /* Allows clicking through the hat */
+        }
+        
+        /* Example positioning - adjust top and left values as needed */
+        .santa-hat {
+          top: -28px;
+          left: 0%;
+          transform-origin: center;
+        }
     </style>
 </head>
 <body>
@@ -281,7 +305,10 @@ get out!
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
 
-    <img class="saxguy" src="https://i.kym-cdn.com/photos/images/newsfeed/000/330/001/75c.gif">
+    <div class="saxguycontainer">
+        <img src="santa-hat.png" class="santa-hat" alt="Santa hat">
+        <img class="saxguy" src="https://i.kym-cdn.com/photos/images/newsfeed/000/330/001/75c.gif">
+    </div>
     <p class="start-tekscik">
         jeśli wiesz o jakimś sztos iwenciku wydarzającym się <span class="rainbow-text">soon</span> i myślisz, że powinien się znaleźć na tej liście: <span class="rainbow-text"><a href="mailto:jakub.pies+iwenciki@gmail.com">hmu</a></span>
     </p>
