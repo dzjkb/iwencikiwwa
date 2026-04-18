@@ -140,7 +140,7 @@ get out!
             left: 30%;
             opacity: 0.3;
             z-index: -1000;
-            pointer-events: none; /* Optional: allows clicking through the image */
+            /* pointer-events: none; Optional: allows clicking through the image */
         }
 
         .img-1 {
@@ -172,6 +172,7 @@ get out!
             animation: rainbow 3s linear infinite;
         }
 
+        <!--
         @keyframes rainbow {
             0% {
                 background-position: 0% center;
@@ -190,6 +191,7 @@ get out!
             opacity: 0.3;
           }
         }
+        -->
         
         .snowflake {
           position: fixed;
@@ -203,7 +205,7 @@ get out!
         }
         
         /* Create variety with different animation durations and delays */
-        .snowflake:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        /*.snowflake:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
         .snowflake:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 1s; }
         .snowflake:nth-child(3) { left: 30%; animation-duration: 12s; animation-delay: 7s; }
         .snowflake:nth-child(4) { left: 40%; animation-duration: 9s; animation-delay: 0.5s; }
@@ -243,11 +245,13 @@ get out!
         .snowflake:nth-child(38) { left: 90%; animation-duration: 9s; animation-delay: 5.9s; }
         .snowflake:nth-child(39) { left: 88%; animation-duration: 11s; animation-delay: 0.1s; }
         .snowflake:nth-child(40) { left: 33%; animation-duration: 12s; animation-delay: 2.7s; }
+        */
+        <!--
         .santa-hat {
           position: absolute;
           width: 65px; /* Adjust size as needed */
           height: 65px;
-          transform: rotate(-20deg); /* Tilted to the left */
+          transform: rotate(-20deg); // Tilted to the left
           z-index: 1000; /* Hovers above other elements */
           pointer-events: none; /* Allows clicking through the hat */
         }
@@ -258,12 +262,25 @@ get out!
           left: 0%;
           transform-origin: center;
         }
+        -->
+
+        .info-big {
+            font-size: clamp(1rem, 2.5vw, 1.6rem);
+            margin-top: 11vh;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .bold {
+        }
     </style>
 </head>
 <body>
     <h1 class="hejka">ej dzieje się dzisiaj coś fajnego na mieście?</h1>
 
     <!-- lmao -->
+    <!--
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
@@ -304,6 +321,7 @@ get out!
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
+    -->
 
     <div class="saxguycontainer">
         <!--<img src="santa-hat.png" class="santa-hat" alt="Santa hat">-->
@@ -311,6 +329,10 @@ get out!
     </div>
     <p class="start-tekscik">
         jeśli wiesz o jakimś sztos iwenciku wydarzającym się <span class="rainbow-text">soon</span> i myślisz, że powinien się znaleźć na tej liście: <span class="rainbow-text"><a href="mailto:jakub.pies+iwenciki@gmail.com">hmu</a></span>
+    </p>
+
+    <p class="info-big">
+        sory admin był na 🇯🇵 wakajkach 🇯🇵, niedługo wracamy z <span class="bold"> REGULAR PROGRAMMING</span>
     </p>
     <ul class="iwenciki-cn"i>
         {% for event in event_list %}
