@@ -335,8 +335,8 @@ get out!
     </p>
 
     <p class="info-big">
-        <span class="bold"><a href="https://mdag.pl/23/pl/warszawa/homepage">MDAG SIĘ ZACZYNA 8.05 BTW</a></span></br>
-        jeśli macie jakieś polecjki to wyślijcie mi plz
+        <!--<span class="bold"><a href="https://mdag.pl/23/pl/warszawa/homepage">MDAG SIĘ ZACZYNA 8.05 BTW</a></span></br>-->
+        kto leci na <a href="https://ephemerafestival.com">efemere</a>???????????? hmu
     </p>
     <ul class="iwenciki-cn"i>
         {% for event in event_list %}
@@ -347,7 +347,7 @@ get out!
         {% endif %}
             <span class="date">{{ event.date }}</span> | <span class="gdzie">{{ event.location }}</span> | 
             <span class="tix">{{ event.tix }}pln</span> | {{ event.description }} {% if event.fblink != 'none' %}
-            <span class="fejsbuk"><a href="{{ event.fblink }}">[event link]</a></span> {% endif %}
+            <span class="fejsbuk"><a href="{{ event.fblink }}" target="_blank">[event link]</a></span> {% endif %}
         </li>
         {% endfor %}
     </ul>
