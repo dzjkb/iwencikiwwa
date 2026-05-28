@@ -157,6 +157,20 @@ get out!
             height: clamp(20rem, 30vw, 50rem);
             transform: translate(0%, 30%);
         }
+        .img-3 {
+            width: clamp(10rem, 15vw, 20rem);
+            height: clamp(10rem, 15vw, 20rem);
+            opacity: 0.4;
+            transform: translate(300%, -30%);
+        }
+        
+        @media (max-width: 768px) {
+            .img-3 {
+                width: clamp(4rem, 12vw, 8rem);   /* much smaller on mobile */
+                height: clamp(4rem, 12vw, 8rem);
+                transform: translate(48vw, -5vw); /* vw-based translation stays in viewport */
+            }
+        }
         .rainbow-text {
             background: linear-gradient(
                 to right,
@@ -353,6 +367,7 @@ get out!
     </ul>
     <a href="transcription.html"><img class="fixed-transparent-image img-1" src="https://art.pixilart.com/020b2fa398d3406.gif"></a>
     <img class="fixed-transparent-image img-2" src="https://www.icegif.com/wp-content/uploads/2024/01/icegif-367.gif">
+    <img class="fixed-transparent-image img-3" src="cat2.gif">
 
     <footer class="dark-links">hey, why not let some <a href="https://www.instagram.com/napieprzanko/">noise into your life?</a></footer>
 </body>
